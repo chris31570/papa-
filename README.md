@@ -1,6 +1,6 @@
-# Cops_FiveM v1.4.0
+# Cops_FiveM v1.5.0
 
-## /!\ If you are upgrading Cops_FiveM to 1.4.0, please have a look to the Upgrade section. If it is the first installation of Cops_FiveM, you can ignore this message. /!\
+## /!\ If you are upgrading Cops_FiveM to 1.5.0, please have a look to the Upgrade section. If it is the first installation of Cops_FiveM, you can ignore this message. /!\
 
 # Description
 
@@ -50,7 +50,8 @@ The contribution guide can be found [here](https://github.com/Kyominii/Cops_Five
 
 # Upgrade
 
-The database has changed with the v1.4.0, so you have to execute [upgrade file](https://github.com/Kyominii/Cops_FiveM/blob/master/upgrade-1.3-to-1.4.sql) on your database to migrate to the new police database
+From <= 1.3 to 1.4 : The database has changed with the v1.4.0, so you have to execute [upgrade file](https://github.com/Kyominii/Cops_FiveM/blob/master/upgrade-1.3-to-1.4.sql) on your database to migrate to the new police database
+Please execute each upgrade files you need from your version to the last one
 
 # Supported scripts
 

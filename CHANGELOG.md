@@ -1,3 +1,6 @@
+## 1.5.0 (NO ETA)
+* --
+
 ## 1.4.0 (09/23/2017)
 * Add ranks
 * Add chat police rank
