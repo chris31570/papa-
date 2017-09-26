@@ -286,6 +286,8 @@ AddEventHandler('chatMessage', function(source, name, message)
 					end
 				end)
 			end
+		else
+			TriggerClientEvent('chatMessage', source, "Cops FiveM", {255, 0, 0}, txt[config.lang]["cop_whitelist_disabled"])
 		end
 	else
 		if(config.displayRankBeforeNameOnChat) then
