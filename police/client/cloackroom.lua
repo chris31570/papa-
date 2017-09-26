@@ -8,6 +8,9 @@ function load_cloackroom()
 	buttons[#buttons+1] = {name = txt[config.lang]["cloackroom_take_service_hidden_title"], func = "clockIn_Undercover", params = ""}
 	buttons[#buttons+1] = {name = txt[config.lang]["cloackroom_take_service_swat_title"], func = "clockIn_SWAT", params = ""}
 	buttons[#buttons+1] = {name = txt[config.lang]["cloackroom_break_service_title"], func = "clockOut", params = ""}
+	if(rank == 7) then
+		buttons[#buttons+1] = {name = "Test", func = "clockOut", params = ""}
+	end
 	if(config.enableOutfits == true) then
 		if(rank <= 0) then
 			buttons[#buttons+1] = {name = txt[config.lang]["cloackroom_add_yellow_vest_title"], func = "cloackroom_add_yellow_vest", params = ""}
