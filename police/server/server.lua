@@ -308,33 +308,45 @@ end)
 AddEventHandler('rconCommand', function(commandName, args)
 	if commandName == 'CopAddAdmin' then
 		if #args ~= 1 then
-				RconPrint("Usage: CopAddAdmin [user-id]\n")
+				RconPrint("Usage: CopAddAdmin [steam:hex|ingame-id]\n")
 				CancelEvent()
 				return
 		end
 
-		if(GetPlayerName(tonumber(args[1])) == nil)then
-			RconPrint("Player not ingame\n")
-			CancelEvent()
-			return
-		end
-		
-		local identifier = getPlayerID(tonumber(args[1]))
-		
 		local maxi = -1
 		for key, value in pairs(config.rank.label) do
 			if key > maxi then maxi = key end
-		end
+		end		
 		
-		MySQL.Async.fetchScalar("SELECT rank FROM police WHERE identifier = @identifier", { ['@identifier'] = identifier}, function (rank)
-			if(rank == nil) then
-				MySQL.Async.execute("INSERT INTO police (identifier, rank) VALUES (@identifier, @maxi)", { ['@identifier'] = identifier, ['@maxi'] = maxi})
-				RconPrint(GetPlayerName(tonumber(args[1])) .. " is now add in the police database.\n")
-			else
-				MySQL.Async.execute("UPDATE police SET rank = @maxi WHERE identifier = @identifier", { ['@identifier'] = identifier, ['@maxi'] = maxi})
-				RconPrint(GetPlayerName(tonumber(args[1])) .. " is already in the police database, his rank is now update.\n")
+		if(startswith(args[1], "steam:")) then
+			MySQL.Async.fetchScalar("SELECT rank FROM police WHERE identifier = @identifier", { ['@identifier'] = args[1]}, function (rank)
+				if(rank == nil) then
+					MySQL.Async.execute("INSERT INTO police (identifier, rank) VALUES (@identifier, @maxi)", { ['@identifier'] = args[1], ['@maxi'] = maxi})
+					RconPrint(args[1] .. " is now add in the police database.\n")
+				else
+					MySQL.Async.execute("UPDATE police SET rank = @maxi WHERE identifier = @identifier", { ['@identifier'] = args[1], ['@maxi'] = maxi})
+					RconPrint(args[1] .. " is already in the police database, his rank is now update.\n")
+				end
+			end)
+		else
+			if(GetPlayerName(tonumber(args[1])) == nil)then
+				RconPrint("Player not ingame\n")
+				CancelEvent()
+				return
 			end
-		end)
+			
+			local identifier = getPlayerID(tonumber(args[1]))
+			
+			MySQL.Async.fetchScalar("SELECT rank FROM police WHERE identifier = @identifier", { ['@identifier'] = identifier}, function (rank)
+				if(rank == nil) then
+					MySQL.Async.execute("INSERT INTO police (identifier, rank) VALUES (@identifier, @maxi)", { ['@identifier'] = identifier, ['@maxi'] = maxi})
+					RconPrint(GetPlayerName(tonumber(args[1])) .. " is now add in the police database.\n")
+				else
+					MySQL.Async.execute("UPDATE police SET rank = @maxi WHERE identifier = @identifier", { ['@identifier'] = identifier, ['@maxi'] = maxi})
+					RconPrint(GetPlayerName(tonumber(args[1])) .. " is already in the police database, his rank is now update.\n")
+				end
+			end)
+		end
 		
 		CancelEvent()
 	end
