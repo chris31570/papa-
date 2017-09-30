@@ -1,3 +1,36 @@
+if COPS_FIVEM_VERSION.isDev == true then
+	RconPrint("/!\\ You are running a dev version of Cops FiveM !\n")
+end
+
+if(config.enableVersionNotifier) then
+	PerformHttpRequest('https://kyominii.com/fivem/cops/version.json', function(err, text, headers)
+		if text then
+			local strToPrint = ""
+		
+			local decode_text = json.decode(text)
+			if decode_text.num.prod_version > COPS_FIVEM_VERSION.num then
+				strToPrint = "A new version of Cops FiveM is available !\nCurrent version : "..COPS_FIVEM_VERSION.str.." | Last version : "..decode_text.str.prod_version.."\n"
+			elseif decode_text.num.prod_version < COPS_FIVEM_VERSION.num then
+				if decode_text.num.dev_version == COPS_FIVEM_VERSION.num then
+					strToPrint = "You are running the last dev version of Cops FiveM !\nCurrent version : "..COPS_FIVEM_VERSION.str.."\n"
+				else
+					strToPrint = "Who are you ? I don't know you !\nCurrent version : "..COPS_FIVEM_VERSION.str.."\n"
+				end
+			elseif decode_text.num.prod_version == COPS_FIVEM_VERSION.num then
+				if COPS_FIVEM_VERSION.isDev == true then
+					strToPrint = "You are running a very old dev version of Cops FiveM !\nCurrent version : "..COPS_FIVEM_VERSION.str.." | Last dev version : "..decode_text.str.dev_version.."\n"
+				else
+					strToPrint = "You have the last version of Cops FiveM !\nCurrent version : "..COPS_FIVEM_VERSION.str.."\n"
+				end
+			end
+			
+			RconPrint(strToPrint)
+		else
+			RconPrint("The version provider service is unreachable !\n")
+		end
+	end, 'GET', '', {})
+end
+
 local inServiceCops = {}
 
 function addCop(identifier)

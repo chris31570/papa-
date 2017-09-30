@@ -1,5 +1,13 @@
---Main config file, mmodify it as you want
+COPS_FIVEM_VERSION = {
+	str = "1.4.1",
+	num = 141,
+	isDev = true
+}
+
+--Main config file, modify it as you want
 config = {
+	enableVersionNotifier = true, --notify is a new version is available (server console)
+
 	useModifiedEmergency = false, --require modified emergency script
 	useModifiedBanking = false, --require Simple Banking
 	useVDKInventory = false, --require VDK Inventory script
