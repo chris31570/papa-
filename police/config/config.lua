@@ -8,7 +8,7 @@ config = {
 	useJobSystem = false, -- require job system
 	useWeashop = false, -- require es_weashop
 	
-	useCopWhitelist = true,
+	useCopWhitelist = false,
 	enableCheckPlate = false, --require garages
 	
 	enableOtherCopsBlips = true,

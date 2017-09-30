@@ -1,5 +1,7 @@
-## 1.5.0 (NO ETA)
-* --
+## 1.4.1 (NO ETA)
+* Add CopAddAdmin rcon command
+* Warning message when performing copadd/coprem when whitelist is disabled
+* Fix : Cloackroom isn't working with no record in db (whitelist disable)
 
 ## 1.4.0 (09/23/2017)
 * Add ranks

@@ -72,6 +72,14 @@ AddEventHandler('police:receiveIsCop', function(result)
 	if(result == -1) then
 		if(config.useCopWhitelist == true) then
 			isCop = false
+		else
+			isCop = true
+			rank = 0
+			
+			load_cloackroom()
+			load_armory()
+			load_garage()
+			load_menu()
 		end
 	else
 		isCop = true

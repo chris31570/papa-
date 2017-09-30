@@ -1,6 +1,6 @@
-# Cops_FiveM v1.5.0 : DEV BRANCH ! NOT TESTED AND UNSTABLE
+# Cops_FiveM v1.4.1 : DEV BRANCH ! NOT TESTED AND UNSTABLE
 
-## /!\ If you are upgrading Cops_FiveM to 1.5.0, please have a look to the Upgrade section. If it is the first installation of Cops_FiveM, you can ignore this message. /!\
+## /!\ If you are upgrading Cops_FiveM to 1.4.1, please have a look to the Upgrade section. If it is the first installation of Cops_FiveM, you can ignore this message. /!\
 
 # Description
 
